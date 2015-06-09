@@ -271,7 +271,7 @@ img {
 }
 
 #features li {
-    list-style-image: url(check-bullet.png);
+    list-style-image: url(icons/check-bullet.png);
     margin-left: 10px;
 }
 
