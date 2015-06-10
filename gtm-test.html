@@ -31,13 +31,13 @@
 		var addEventListener = function (el) {
 			var x = {
 						event: 'event',
-						category: el.getAttribute('data-category')
+						'event.category': el.getAttribute('data-category')
 					},
 					actions = el.getAttribute('data-actions');
 
-			if (el.getAttribute('data-action')) x.action = el.getAttribute('data-action');
-			if (el.getAttribute('data-label')) x.label = el.getAttribute('data-label');
-			if (el.getAttribute('data-value')) x.value = el.getAttribute('data-value');
+			if (el.getAttribute('data-action')) x['event.action'] = el.getAttribute('data-action');
+			if (el.getAttribute('data-label')) x['event.label'] = el.getAttribute('data-label');
+			if (el.getAttribute('data-value')) x['event.value'] = el.getAttribute('data-value');
 
 			if (actions) {
 				actions.split(',').forEach(function (action) {
