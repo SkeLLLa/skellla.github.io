@@ -53,13 +53,13 @@
 									attributeFilter: ['style']
 								});
 					} else {
-						x.action = action;
+						x['event.action'] = action;
 						addRegularEvent(action, x, el)
 					}
 				});
 			} else {
-				x.action = x.action || 'click';
-				addRegularEvent(x.action, x, el);
+				x['event.action'] = x['event.action'] || 'click';
+				addRegularEvent(x['event.action'], x, el);
 			}
 		};
 		if (config.live) {
