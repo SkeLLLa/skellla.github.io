@@ -22,85 +22,87 @@
 <button class="gtm" data-category="button" data-action="click" data-label="wonder button" data-value="1">Wazup</button>
 
 
-<script>
-	(function (sel, config) {
-		sel = sel || '.gtm';
-		var addRegularEvent = function (action, event, element, callback) {
-			element.addEventListener(action, function () {
-				dataLayer = dataLayer || [];
-				dataLayer.push(event);
-				typeof callback === 'function' && callback();
-			});
-		};
+<a href="#test" data-category="link" data-action="click" data-label="link-test" data-value="1">A fucking link</a>
 
-		var addEventListener = function (el) {
-			var x = {
-						event: 'event',
-						'event.category': el.getAttribute('data-category')
-					},
-					actions = el.getAttribute('data-actions');
+<!--<script>-->
+	<!--(function (sel, config) {-->
+		<!--sel = sel || '.gtm';-->
+		<!--var addRegularEvent = function (action, event, element, callback) {-->
+			<!--element.addEventListener(action, function () {-->
+				<!--dataLayer = dataLayer || [];-->
+				<!--dataLayer.push(event);-->
+				<!--typeof callback === 'function' && callback();-->
+			<!--});-->
+		<!--};-->
 
-			if (el.getAttribute('data-action')) x['event.action'] = el.getAttribute('data-action');
-			if (el.getAttribute('data-label')) x['event.label'] = el.getAttribute('data-label');
-			if (el.getAttribute('data-value')) x['event.value'] = el.getAttribute('data-value');
+		<!--var addEventListener = function (el) {-->
+			<!--var x = {-->
+						<!--event: 'event',-->
+						<!--'event.category': el.getAttribute('data-category')-->
+					<!--},-->
+					<!--actions = el.getAttribute('data-actions');-->
 
-			if (actions) {
-				actions.split(',').forEach(function (action) {
-					if (config.transitions && (action === 'show' || action === 'hide')) {
-						//mutation observer
-						new MutationObserver(function (mutations) {
-							mutations.forEach(function (mutation) {
-								//TODO
-							})
-						}).observe(el, {
-									attributes: true,
-									attributeOldValue: true,
-									attributeFilter: ['style']
-								});
-					} else {
-						x['event.action'] = action;
-						addRegularEvent(action, x, el)
-					}
-				});
-			} else {
-				x['event.action'] = x['event.action'] || 'click';
-				addRegularEvent(x['event.action'], x, el);
-			}
-		};
-		if (config.live) {
-			new MutationObserver(function (mutations) {
-				mutations.forEach(function (mutation) {
-					if (mutation.addedNodes) {
-						var node, matches;
-						for (var i = 0; i < mutation.addedNodes.length; i++) {
-							node = mutation.addedNodes[i];
-							node.matches = node.matches ||
-									node.matchesSelector ||
-									node.webkitmatchesSelector ||
-									node.oMatchesSelector ||
-									node.msMatchesSelector ||
-									node.mozMatchesSelector;
-							if (typeof node.matches === 'function' && node.matches(sel)) {
-								addEventListener(node);
-							}
-						}
-					}
-				});
-			}).observe(document, {childList: true, subtree: true});
-		}
-		var els = document.querySelectorAll(sel);
-		[].forEach.call(els, function (el) {
-			addEventListener(el);
-		});
+			<!--if (el.getAttribute('data-action')) x['event.action'] = el.getAttribute('data-action');-->
+			<!--if (el.getAttribute('data-label')) x['event.label'] = el.getAttribute('data-label');-->
+			<!--if (el.getAttribute('data-value')) x['event.value'] = el.getAttribute('data-value');-->
 
-	})(
-			'.gtm',
-			{
-				transitions: false,
-				live: false
-			}
-	);
-</script>
+			<!--if (actions) {-->
+				<!--actions.split(',').forEach(function (action) {-->
+					<!--if (config.transitions && (action === 'show' || action === 'hide')) {-->
+						<!--//mutation observer-->
+						<!--new MutationObserver(function (mutations) {-->
+							<!--mutations.forEach(function (mutation) {-->
+								<!--//TODO-->
+							<!--})-->
+						<!--}).observe(el, {-->
+									<!--attributes: true,-->
+									<!--attributeOldValue: true,-->
+									<!--attributeFilter: ['style']-->
+								<!--});-->
+					<!--} else {-->
+						<!--x['event.action'] = action;-->
+						<!--addRegularEvent(action, x, el)-->
+					<!--}-->
+				<!--});-->
+			<!--} else {-->
+				<!--x['event.action'] = x['event.action'] || 'click';-->
+				<!--addRegularEvent(x['event.action'], x, el);-->
+			<!--}-->
+		<!--};-->
+		<!--if (config.live) {-->
+			<!--new MutationObserver(function (mutations) {-->
+				<!--mutations.forEach(function (mutation) {-->
+					<!--if (mutation.addedNodes) {-->
+						<!--var node, matches;-->
+						<!--for (var i = 0; i < mutation.addedNodes.length; i++) {-->
+							<!--node = mutation.addedNodes[i];-->
+							<!--node.matches = node.matches ||-->
+									<!--node.matchesSelector ||-->
+									<!--node.webkitmatchesSelector ||-->
+									<!--node.oMatchesSelector ||-->
+									<!--node.msMatchesSelector ||-->
+									<!--node.mozMatchesSelector;-->
+							<!--if (typeof node.matches === 'function' && node.matches(sel)) {-->
+								<!--addEventListener(node);-->
+							<!--}-->
+						<!--}-->
+					<!--}-->
+				<!--});-->
+			<!--}).observe(document, {childList: true, subtree: true});-->
+		<!--}-->
+		<!--var els = document.querySelectorAll(sel);-->
+		<!--[].forEach.call(els, function (el) {-->
+			<!--addEventListener(el);-->
+		<!--});-->
+
+	<!--})(-->
+			<!--'.gtm',-->
+			<!--{-->
+				<!--transitions: false,-->
+				<!--live: false-->
+			<!--}-->
+	<!--);-->
+<!--</script>-->
 
 </body>
 </html>
