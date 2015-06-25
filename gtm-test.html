@@ -22,15 +22,8 @@
 	<button class="gtm" type="submit" data-actions="submit" data-category="buttons" data-label="form submit btn">Submit</button>
 </form>
 
-<script>
-	function showDiv () {
-		var d = document.getElementById('test');
-		d.removeAttribute("style");
-		dataLayer.push({'event':'event', element: d});
-	}
-</script>
-<a class="" onclick="return showDiv();">Show event</a>
-<div id="test" data-gtm-category="divs" data-gtm-action="show">hidden</div>
+<a class="testme" data-target="test">Show event</a>
+<div id="test" data-whoami="imadiv" data-gtm-category="divs" data-gtm-action="show">hidden</div>
 <!--<script>-->
 	<!--(function (sel, config) {-->
 		<!--sel = sel || '.gtm';-->
