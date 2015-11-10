@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="content">
+
+</div>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+<script id="template-test" type="text/x-handlebars-template">
+	<h2>{{name}}</h2>
+
+	<p>{{{update}}}</p>
+	<span>Sent From: {{from}} - In: {{location}}</span>
+</script>
+
+<script>
+	var data = {
+				name: 'Jane Doe',
+				update: 'Just Made my Breakfaast',
+				from: 'Web',
+				location: 'Canada'
+			},
+			template = Handlebars.compile($('#template-test').html());
+	$('#content').append(template(data));
+</script>
+</body>
+</html>
