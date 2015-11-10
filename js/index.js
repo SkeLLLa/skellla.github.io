@@ -1,7 +1,7 @@
 /**
  * Created by m03geek on 11/10/15.
  */
-(function(w) {
+(function (w) {
 	var config = {
 		templates: {
 			urlPrefix: 'templates/'
@@ -15,6 +15,12 @@
 			}).fail(function () {
 				callback('Error');
 			});
+		},
+		getParameterByName: function (name) {
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+			return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 		}
 	};
 
