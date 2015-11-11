@@ -9,7 +9,9 @@
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
 
 <script type="text/javascript">
-	alert($.parseJSON('{"qwe":"qwe"}'))
+	var a = '[{"id":"1","name":"q","ui_desc_page":"http://qqq-servers.com/ui/screen/offers/11533.php","selected":true},{"id":"2","name":"qq Input","ui_desc_page":"http://qqq-servers.com/ui/screen/offers/11568.php","selected":true},{"id":"3","name":"qqqq","ui_desc_page":"http://qqq-servers.com/ui/screen/offers/11581.php","selected":true}]';
+	var b = $.parseJSON(a);
+	alert(b[0].id)
 </script>
 </body>
 </html>
