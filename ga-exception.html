@@ -19,7 +19,11 @@
     window.version = '1.2.3';
 
 </script>
-
+<script>
+    window.onerror = function(){
+        console.log('original error catcher', arguments);
+    }
+</script>
 <script>
     (function (window) {
         // Retain a reference to the previous global error handler, in case it has been set:
@@ -39,6 +43,7 @@
          *                                         firing of the default event handler.
          */
         window.onerror = function customErrorHandler (errorMessage, url, lineNumber, columnNumber, errorObject) {
+            console.log('Window.onerror call', window.version);
             // Send error details to Google Analytics, if the library is already available:
             if (typeof ga === 'function') {
                 // In case the "errorObject" is available, use its data, else fallback
@@ -83,7 +88,7 @@
     }
     console.log('Ex-2');
     try {
-        console.log(bbb);
+        //console.log(bbb);
     } catch (ex) {
         ga('send', 'exception', {
             'exDescription': ex.message,
@@ -101,7 +106,8 @@
 </script>
 <script>
     console.log('Throwing error');
-    throw new Error('Oh Doh!')
+    throw new Error('Oh Doh!');
+    console.log('Error thrown');
 </script>
 </body>
 </html>
