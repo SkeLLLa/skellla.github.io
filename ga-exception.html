@@ -104,6 +104,12 @@
         'version': window.version,
         'dimension2': 'AdditionalData'
     });
+    ga('send', 'exception', {
+        'exDescription': "My fancy error",
+        'exFatal': true, // Some Error types might be considered as fatal.
+        'appName': 'FrontEnd',
+        'appVersion': '1.2.3.4'
+    });
 </script>
 <script>
     notThere();
